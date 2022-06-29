@@ -20,7 +20,7 @@ SELECT distinct m.title Title, g.name Genre , u.gender Gender, u.age Age, o.name
 WHERE g.name = "Sci-Fi" AND u.gender = "M" AND u.age = 24 AND o.name = "Student" AND r.rating = 5;
 
 -- List the unique titles of each of the movies released on the most popular release day.
-SELECT title, release_date FROM movies WHERE release_date =
+SELECT distinct title, release_date FROM movies WHERE release_date =
 (SELECT release_date FROM movies GROUP BY release_date ORDER BY COUNT(title) DESC LIMIT 1)
 GROUP BY title;
 
