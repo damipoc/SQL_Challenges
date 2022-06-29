@@ -1,5 +1,5 @@
 USE world;
-
+SET SQL_SAFE_UPDATES = 0;
 
 -- Using COUNT, get the number of cities in the USA.
 SELECT COUNT(*) from city WHERE CountryCode = "USA";
@@ -45,7 +45,11 @@ WHERE country.Name = "Japan"
 ORDER BY city.Population DESC LIMIT 5;
 
 -- List the names and country codes of every country with Elizabeth II as its Head of State. You will need to fix the mistake first!
-SELECT Code, Name FROM country WHERE HeadOfState LIKE "Elisabeth II";
+UPDATE country
+SET HeadOfState="Elizabeth II"
+WHERE HeadOfState="Elisabeth II";
+
+Select Code, Name FROM country WHERE HeadOfState Like "%Elizabeth II%";
 
 -- List the top ten countries with the smallest population-to-area ratio. Discard any countries with a ratio of 0.
 SELECT Name, SurfaceArea, Population, (Population%SurfaceArea) AS "Ratio" FROM country WHERE Population%SurfaceArea != 0 ORDER BY Population%SurfaceArea;
