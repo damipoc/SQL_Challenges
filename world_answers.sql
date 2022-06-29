@@ -52,7 +52,7 @@ WHERE HeadOfState="Elisabeth II";
 Select Code, Name FROM country WHERE HeadOfState Like "%Elizabeth II%";
 
 -- List the top ten countries with the smallest population-to-area ratio. Discard any countries with a ratio of 0.
-SELECT Name, SurfaceArea, Population, (Population%SurfaceArea) AS "Ratio" FROM country WHERE Population%SurfaceArea != 0 ORDER BY Population%SurfaceArea;
+SELECT Name, SurfaceArea, Population, (Population/SurfaceArea) AS "Ratio" FROM country WHERE Population/SurfaceArea != 0 ORDER BY Population/SurfaceArea;
 
 -- List every unique world language.
 SELECT Distinct Language FROM countrylanguage ORDER BY Language;
